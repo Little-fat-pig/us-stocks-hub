@@ -4,76 +4,37 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>美股上市公司分类导航</title>
-  <meta name="description" content="按行业与业务分类的美股上市公司目录，每条含简介与官网链接，机器可读、人类可跳转。" />
+  <meta name="description" content="按细分行业分类的美股全部上市公司目录，左侧全部分类导航，右侧卡片可跳转官网/行情，机器可读。" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1>美股上市公司分类导航</h1>
-    <p>按行业 / 业务分类 · 一句话简介 · 一键跳转官网</p>
-    <span class="badge" id="updated">数据更新中…</span>
+  <header class="topbar">
+    <h1><span class="star">★</span> 美股上市公司分类导航</h1>
+    <span class="meta" id="totalMeta">加载中…</span>
+    <div class="search">
+      <input id="search" type="search" placeholder="搜索公司名 / 股票代码…" autocomplete="off" />
+    </div>
   </header>
 
-  <nav class="nav" id="nav"></nav>
+  <div class="layout">
+    <nav class="sidebar" id="sidebar">
+      <h2>全部分类</h2>
+      <!-- 分类由 app.js 渲染 -->
+    </nav>
 
-  <main class="wrap">
-    <div id="content"></div>
-    <div class="note" id="note" style="display:none"></div>
-    <footer>
-      本页为静态导航，官网链接以各公司公布为准 · 数据源 companies.json 可供 AI 直接读取
-    </footer>
-  </main>
+    <main class="content">
+      <div class="crumbs">
+        <span class="title" id="catTitle">全部公司</span>
+        <span class="sub" id="catSub"></span>
+      </div>
+      <div class="note" id="note"></div>
+      <div class="grid" id="grid"></div>
+      <button class="more" id="more" hidden>加载更多</button>
+    </main>
+  </div>
 
-  <script>
-    fetch('./companies.json')
-      .then(r => r.json())
-      .then(data => render(data))
-      .catch(() => {
-        const note = document.getElementById('note');
-        note.style.display = 'block';
-        note.textContent = '无法加载 companies.json。请通过 GitHub Pages 或本地服务器访问（直接双击打开文件会因浏览器安全策略读不到数据）。';
-      });
+  <footer id="footer"></footer>
 
-    function render(data) {
-      document.getElementById('updated').textContent = '更新于 ' + (data.updated || '—');
-
-      const nav = document.getElementById('nav');
-      const content = document.getElementById('content');
-      data.categories.forEach((cat, i) => {
-        const aid = 'cat-' + cat.id;
-        const link = document.createElement('a');
-        link.href = '#' + aid;
-        link.textContent = cat.name;
-        nav.appendChild(link);
-
-        const sec = document.createElement('section');
-        sec.id = aid;
-        const h2 = document.createElement('h2');
-        h2.textContent = (i + 1) + '. ' + cat.name;
-        sec.appendChild(h2);
-
-        const grid = document.createElement('div');
-        grid.className = 'grid';
-        cat.companies.forEach(c => {
-          const card = document.createElement('div');
-          card.className = 'card';
-          card.innerHTML =
-            '<div class="top"><span class="ticker">' + c.ticker + '</span>' +
-            '<span class="name"></span></div>' +
-            '<div class="sector"></div>' +
-            '<div class="intro"></div>' +
-            '<a class="visit" target="_blank" rel="noopener">访问官网 ↗</a>';
-          card.querySelector('.name').textContent = c.name;
-          card.querySelector('.sector').textContent = c.sector || '';
-          card.querySelector('.intro').textContent = c.intro || '';
-          const a = card.querySelector('.visit');
-          a.href = c.website;
-          grid.appendChild(card);
-        });
-        sec.appendChild(grid);
-        content.appendChild(sec);
-      });
-    }
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>
