@@ -3,23 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>美股上市公司分类导航</title>
-  <meta name="description" content="按细分行业分类的美股全部上市公司目录，左侧全部分类导航，右侧卡片可跳转官网/行情，机器可读。" />
+  <title>全球股市上市公司分类导航</title>
+  <meta name="description" content="美股 / 中国 / 日本 / 英国 上市公司按主营业务分类导航，左侧全部分类，右侧卡片可跳转官网/行情，支持中英切换。" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="topbar">
-    <h1><span class="star">★</span> 美股上市公司分类导航</h1>
+    <h1><span class="star">★</span> <span data-i18n="title">全球股市上市公司分类导航</span></h1>
     <span class="meta" id="totalMeta">加载中…</span>
-    <div class="search">
-      <input id="search" type="search" placeholder="搜索公司名 / 股票代码…" autocomplete="off" />
+    <div class="top-actions">
+      <button id="langBtn" class="lang-btn" title="切换语言">EN</button>
+      <div class="search">
+        <input id="search" type="search" data-i18n-ph="searchPlaceholder" placeholder="搜索公司名 / 股票代码…" autocomplete="off" />
+      </div>
     </div>
   </header>
 
   <div class="layout">
     <nav class="sidebar" id="sidebar">
-      <h2>全部分类</h2>
-      <!-- 分类由 app.js 渲染 -->
+      <div class="market-switch" id="marketTabs"></div>
+      <h2 data-i18n="allCategories">全部分类</h2>
+      <div id="catList"></div>
     </nav>
 
     <main class="content">
