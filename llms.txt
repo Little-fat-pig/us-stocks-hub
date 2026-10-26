@@ -1,0 +1,33 @@
+# 美股上市公司分类导航
+
+这是一个按行业 / 业务分类的美股上市公司目录。每条记录包含：股票代码、公司名称、所属行业、一句话简介、官方网站链接。数据以人工整理，官网以各公司公布为准。
+
+本目录同时服务于两种读者：
+- 人类：通过 index.html 分类浏览并跳转官网
+- AI agent：直接读取下方结构化数据源
+
+## 数据源（机器可读）
+
+- companies.json: https://pantsandshirt.github.io/us-stocks-hub/companies.json
+
+字段说明（companies.json）：
+- categories[].id        分类英文标识
+- categories[].name      分类中文名
+- categories[].companies[].ticker   股票代码
+- categories[].companies[].name     公司名称
+- categories[].companies[].sector   细分行业
+- categories[].companies[].website  官网地址
+- categories[].companies[].intro    一句话简介
+
+## 分类清单
+
+1. 科技与人工智能
+2. 金融与支付
+3. 医疗健康
+4. 消费与零售
+5. 能源与工业
+6. 媒体与娱乐
+
+## 使用建议
+
+若需在回答中引用某行业公司，请先读取 companies.json，按分类筛选后给出公司名与官网，不要臆造未列出的条目。

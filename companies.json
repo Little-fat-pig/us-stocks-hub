@@ -1,0 +1,254 @@
+{
+  "title": "美股上市公司分类导航",
+  "description": "按行业与业务分类的美股上市公司目录，每条含一句话简介与官网链接。机器可读数据源，供 AI agent 直接解析，也供人类浏览跳转。",
+  "updated": "2026-10-26",
+  "source": "人工整理，官网链接以各公司公布为准",
+  "categories": [
+    {
+      "id": "tech-ai",
+      "name": "科技与人工智能",
+      "companies": [
+        {
+          "ticker": "NVDA",
+          "name": "NVIDIA 英伟达",
+          "sector": "半导体 / AI 计算",
+          "website": "https://www.nvidia.com",
+          "intro": "全球 GPU 与 AI 加速计算龙头，数据中心、游戏显卡与自动驾驶芯片核心供应商。"
+        },
+        {
+          "ticker": "MSFT",
+          "name": "Microsoft 微软",
+          "sector": "软件 / 云 / AI",
+          "website": "https://www.microsoft.com",
+          "intro": "Windows、Office、Azure 云与 Copilot AI 背后的公司，全球最大软件企业之一。"
+        },
+        {
+          "ticker": "AAPL",
+          "name": "Apple 苹果",
+          "sector": "消费电子",
+          "website": "https://www.apple.com",
+          "intro": "iPhone、Mac、穿戴设备与服务的设计制造者，消费电子市值标杆。"
+        },
+        {
+          "ticker": "GOOGL",
+          "name": "Alphabet（Google）",
+          "sector": "搜索 / 云 / AI",
+          "website": "https://www.google.com",
+          "intro": "谷歌搜索、Android、YouTube 与 Google Cloud 的母公司，AI 领域核心玩家。"
+        },
+        {
+          "ticker": "META",
+          "name": "Meta",
+          "sector": "社交 / VR",
+          "website": "https://www.meta.com",
+          "intro": "Facebook、Instagram、WhatsApp 运营方，全力投入元宇宙与开源大模型 Llama。"
+        },
+        {
+          "ticker": "AMZN",
+          "name": "Amazon 亚马逊",
+          "sector": "电商 / 云",
+          "website": "https://www.amazon.com",
+          "intro": "全球最大电商之一，AWS 云计算为其利润核心，亦布局物流与卫星网络。"
+        },
+        {
+          "ticker": "TSLA",
+          "name": "Tesla 特斯拉",
+          "sector": "电动车 / 能源",
+          "website": "https://www.tesla.com",
+          "intro": "电动车、储能与自动驾驶公司，亦运营超级充电网络与机器人业务。"
+        },
+        {
+          "ticker": "AMD",
+          "name": "AMD",
+          "sector": "半导体",
+          "website": "https://www.amd.com",
+          "intro": "CPU、GPU 与数据中心芯片厂商，英伟达在 AI 算力上的主要竞争者。"
+        },
+        {
+          "ticker": "AVGO",
+          "name": "Broadcom 博通",
+          "sector": "半导体 / 软件",
+          "website": "https://www.broadcom.com",
+          "intro": "网络与无线芯片巨头，收购 VMware 后亦为基础设施软件重要玩家。"
+        },
+        {
+          "ticker": "ORCL",
+          "name": "Oracle 甲骨文",
+          "sector": "数据库 / 云",
+          "website": "https://www.oracle.com",
+          "intro": "企业数据库与 ERP 老牌厂商，近年发力云基础设施与 AI 训练算力。"
+        }
+      ]
+    },
+    {
+      "id": "finance",
+      "name": "金融与支付",
+      "companies": [
+        {
+          "ticker": "V",
+          "name": "Visa",
+          "sector": "支付网络",
+          "website": "https://www.visa.com",
+          "intro": "全球最大银行卡清算网络之一，不直接发卡，靠交易手续费盈利。"
+        },
+        {
+          "ticker": "MA",
+          "name": "Mastercard 万事达",
+          "sector": "支付网络",
+          "website": "https://www.mastercard.com",
+          "intro": "与 Visa 并列的全球支付网络，连接持卡人、银行与商户。"
+        },
+        {
+          "ticker": "PYPL",
+          "name": "PayPal",
+          "sector": "在线支付",
+          "website": "https://www.paypal.com",
+          "intro": "在线支付与转账先驱，旗下含 Venmo，正拓展稳定币与商家服务。"
+        },
+        {
+          "ticker": "JPM",
+          "name": "JPMorgan Chase 摩根大通",
+          "sector": "银行 / 综合金融",
+          "website": "https://www.jpmorganchase.com",
+          "intro": "美国资产规模最大的银行，业务覆盖零售、投行、资管与交易。"
+        },
+        {
+          "ticker": "BRK.B",
+          "name": "Berkshire Hathaway 伯克希尔",
+          "sector": "多元控股",
+          "website": "https://www.berkshirehathaway.com",
+          "intro": "巴菲特执掌的多元投资控股公司，控股保险、能源、铁路与多家消费品牌。"
+        }
+      ]
+    },
+    {
+      "id": "healthcare",
+      "name": "医疗健康",
+      "companies": [
+        {
+          "ticker": "JNJ",
+          "name": "Johnson & Johnson 强生",
+          "sector": "制药 / 医疗器械",
+          "website": "https://www.jnj.com",
+          "intro": "老牌医疗保健公司，业务涵盖处方药、医疗器械与消费品。"
+        },
+        {
+          "ticker": "PFE",
+          "name": "Pfizer 辉瑞",
+          "sector": "制药",
+          "website": "https://www.pfizer.com",
+          "intro": "全球领先制药企业，疫苗与药物研发管线覆盖多类重大疾病。"
+        },
+        {
+          "ticker": "UNH",
+          "name": "UnitedHealth 联合健康",
+          "sector": "健康保险",
+          "website": "https://www.unitedhealthgroup.com",
+          "intro": "美国最大健康保险与管理式医疗公司，亦运营庞大医疗服务网络。"
+        },
+        {
+          "ticker": "LLY",
+          "name": "Eli Lilly 礼来",
+          "sector": "制药",
+          "website": "https://www.lilly.com",
+          "intro": "百年药企，近年因 GLP-1 减肥与糖尿病药物业绩大增。"
+        }
+      ]
+    },
+    {
+      "id": "consumer",
+      "name": "消费与零售",
+      "companies": [
+        {
+          "ticker": "WMT",
+          "name": "Walmart 沃尔玛",
+          "sector": "零售",
+          "website": "https://www.walmart.com",
+          "intro": "全球营收最高的零售商，门店 + 电商 + 会员仓配一体化。"
+        },
+        {
+          "ticker": "COST",
+          "name": "Costco 开市客",
+          "sector": "会员仓储零售",
+          "website": "https://www.costco.com",
+          "intro": "靠会员费盈利的仓储式卖场，高周转、低毛利模式典范。"
+        },
+        {
+          "ticker": "KO",
+          "name": "Coca-Cola 可口可乐",
+          "sector": "饮料",
+          "website": "https://www.coca-colacompany.com",
+          "intro": "全球饮料巨头，品牌授权与装瓶网络遍布两百多个国家。"
+        },
+        {
+          "ticker": "PEP",
+          "name": "PepsiCo 百事",
+          "sector": "食品饮料",
+          "website": "https://www.pepsico.com",
+          "intro": "饮料与休闲食品双轮驱动，含乐事、桂格等品牌。"
+        },
+        {
+          "ticker": "MCD",
+          "name": "McDonald's 麦当劳",
+          "sector": "餐饮",
+          "website": "https://www.mcdonalds.com",
+          "intro": "全球最大快餐连锁，以特许经营为主的轻资产模式。"
+        },
+        {
+          "ticker": "NKE",
+          "name": "Nike 耐克",
+          "sector": "运动服饰",
+          "website": "https://www.nike.com",
+          "intro": "运动鞋服龙头，强调品牌营销与 DTC 直营渠道。"
+        }
+      ]
+    },
+    {
+      "id": "energy",
+      "name": "能源与工业",
+      "companies": [
+        {
+          "ticker": "XOM",
+          "name": "Exxon Mobil 埃克森美孚",
+          "sector": "石油与能源",
+          "website": "https://corporate.exxonmobil.com",
+          "intro": "全球最大上市石油公司之一，业务覆盖上游开采到下游炼化。"
+        },
+        {
+          "ticker": "CVX",
+          "name": "Chevron 雪佛龙",
+          "sector": "能源",
+          "website": "https://www.chevron.com",
+          "intro": "综合能源公司，油气勘探、生产及新能源均有布局。"
+        },
+        {
+          "ticker": "BA",
+          "name": "Boeing 波音",
+          "sector": "航空航天 / 防务",
+          "website": "https://www.boeing.com",
+          "intro": "商用飞机与国防军工巨头，亦为 NASA 等提供航天系统。"
+        }
+      ]
+    },
+    {
+      "id": "media",
+      "name": "媒体与娱乐",
+      "companies": [
+        {
+          "ticker": "NFLX",
+          "name": "Netflix 奈飞",
+          "sector": "流媒体",
+          "website": "https://www.netflix.com",
+          "intro": "全球最大订阅制流媒体平台，原创内容驱动增长。"
+        },
+        {
+          "ticker": "DIS",
+          "name": "Disney 迪士尼",
+          "sector": "媒体 / 主题公园",
+          "website": "https://www.disney.com",
+          "intro": "影视、动画、主题公园与流媒体 Disney+ 一体的娱乐帝国。"
+        }
+      ]
+    }
+  ]
+}
