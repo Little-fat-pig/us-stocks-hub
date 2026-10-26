@@ -8,7 +8,7 @@
 
 ## 数据源（机器可读）
 
-- companies.json: https://pantsandshirt.github.io/us-stocks-hub/companies.json
+- companies.json: https://little-fat-pig.github.io/us-stocks-hub/companies.json
 
 字段说明（companies.json）：
 - categories[].id        分类英文标识
