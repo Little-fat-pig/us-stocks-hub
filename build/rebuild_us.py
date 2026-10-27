@@ -17,40 +17,45 @@ def p(*a):
     return os.path.join(ROOT, *a)
 
 
+# ---------- 交易所中文名 -> 英文代码 ----------
+EXCHANGE_EN = {'纳斯达克': 'NASDAQ', '纽交所': 'NYSE', '美交所': 'AMEX', 'NYSE American': 'NYSE American',
+                '纽交所美国(AMEX)': 'NYSE American', '纽交所Arca': 'NYSE Arca', '其他交易所': 'Other Exchange', '场外': 'OTC', 'OTC': 'OTC'}
+
+
 # ---------- 分类体系（顺序即侧边栏顺序） ----------
 TAXONOMY = [
-    ('semiconductor', '半导体与芯片'),
-    ('hardware', '电子与硬件设备'),
-    ('software', '软件与 SaaS'),
-    ('internet', '互联网与平台'),
-    ('ecommerce', '电商与数字零售'),
-    ('telecom', '电信与通信'),
-    ('media', '媒体与娱乐'),
-    ('advertising', '广告与营销'),
-    ('biotech', '生物科技'),
-    ('pharma', '制药'),
-    ('meddevice', '医疗器械'),
-    ('healthcare', '医疗健康服务'),
-    ('banking', '银行'),
-    ('insurance', '保险'),
-    ('asset', '资管·私募·SPAC'),
-    ('financial', '金融综合服务'),
-    ('reit', '房地产与 REIT'),
-    ('oilgas', '油气与能源'),
-    ('renewable', '新能源与公用事业'),
-    ('chemical', '化工与材料'),
-    ('mining', '金属与采矿'),
-    ('auto', '汽车与零部件'),
-    ('aerospace', '航空航天与国防'),
-    ('transport', '运输·物流·航运'),
-    ('manufacturing', '工业与机械制造'),
-    ('construction', '建筑与工程'),
-    ('restaurant', '食品饮料与餐饮'),
-    ('retail', '零售与消费品牌'),
-    ('travel', '旅游·酒店·博彩'),
-    ('education', '教育'),
-    ('hr', '人力资源与商业服务'),
-    ('other', '其他'),
+    ('semiconductor', 'Semiconductors & Chips'),
+    ('hardware', 'Electronics & Hardware'),
+    ('software', 'Software & SaaS'),
+    ('internet', 'Internet & Platforms'),
+    ('ecommerce', 'E-commerce & Digital Retail'),
+    ('telecom', 'Telecom & Communications'),
+    ('media', 'Media & Entertainment'),
+    ('advertising', 'Advertising & Marketing'),
+    ('biotech', 'Biotechnology'),
+    ('pharma', 'Pharmaceuticals'),
+    ('meddevice', 'Medical Devices'),
+    ('healthcare', 'Healthcare Services'),
+    ('banking', 'Banks'),
+    ('insurance', 'Insurance'),
+    ('asset', 'Asset Mgmt & SPAC'),
+    ('financial', 'Financial Services'),
+    ('reit', 'Real Estate & REITs'),
+    ('oilgas', 'Oil, Gas & Energy'),
+    ('renewable', 'Renewables & Utilities'),
+    ('chemical', 'Chemicals & Materials'),
+    ('mining', 'Metals & Mining'),
+    ('auto', 'Autos & Parts'),
+    ('aerospace', 'Aerospace & Defense'),
+    ('transport', 'Transport & Logistics'),
+    ('manufacturing', 'Industrial & Machinery'),
+    ('construction', 'Construction & Engineering'),
+    ('restaurant', 'Food & Beverage'),
+    ('retail', 'Retail & Consumer Brands'),
+    ('travel', 'Travel & Hotels'),
+    ('education', 'Education'),
+    ('hr', 'HR & Business Services'),
+    ('other', 'Other'),
 ]
 
 # ---------- 行业名（小写）-> 分类；顺序敏感，具体的写前面 ----------
@@ -399,7 +404,7 @@ def main():
         item = {
             'ticker': t,
             'name': co['name'],
-            'exchange': co.get('exchange', ''),
+            'exchange': EXCHANGE_EN.get(co.get('exchange', ''), co.get('exchange', '')),
         }
 
         if ok:

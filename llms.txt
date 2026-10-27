@@ -1,43 +1,43 @@
-# 美股上市公司分类导航
+# US Listed Companies Navigator
 
-这是一个按**主营业务**分类的**美股全部上市公司**目录：约 5,277 家运营公司，分为 32 个行业品类。每条记录包含股票代码、公司名称、上市交易所、细分行业（现代行业分类）、员工数、上市年份、官方业务描述、官方网站链接。
+A directory of **all US-listed operating companies**, grouped by **primary business** — 5,264 companies across 32 industry categories. Each record carries ticker, company name, exchange, industry (modern taxonomy), employee count, IPO year, the company's official business description, and its official website.
 
-已剔除 ETF、ETN、企业债、权证、优先股等非普通股，以及封闭式基金等非运营实体。
+ETFs, ETNs, corporate bonds, warrants, preferred shares, and closed-end funds are excluded.
 
-本目录同时服务于两种读者：
-- 人类：通过 `index.html` 左侧分类栏浏览、搜索并直达官网
-- AI agent：直接读取下方结构化数据源
+This directory serves two audiences:
+- Humans: browse and search via `index.html` (left-hand category sidebar, cards link straight to the official site)
+- AI agents: read the structured data source below
 
-## 数据源（机器可读）
+## Data source (machine-readable)
 
 - companies.json: https://little-fat-pig.github.io/us-stocks-hub/companies.json
 
-字段说明（companies.json）：
+Field reference (companies.json):
 
-| 字段 | 说明 |
+| Field | Meaning |
 | --- | --- |
-| `meta.total` | 公司总数 |
-| `meta.source` | 数据来源 |
-| `meta.updated` | 数据日期 |
-| `meta.generatedBy` | 分类与剔除策略说明 |
-| `categories[].id` | 分类英文标识 |
-| `categories[].name` | 分类中文名 |
-| `categories[].companies[].ticker` | 股票代码 |
-| `categories[].companies[].name` | 公司名称 |
-| `categories[].companies[].exchange` | 上市交易所 |
-| `categories[].companies[].industry` | 细分行业（英文，现代行业分类） |
-| `categories[].companies[].sector` | 所属分类中文名 |
-| `categories[].companies[].employees` | 员工数 |
-| `categories[].companies[].ipo` | 上市年份 |
-| `categories[].companies[].intro` | 官方业务描述（英文原文） |
-| `categories[].companies[].website` | 官方网站 |
-| `categories[].companies[].linkType` | `official` 官网 / `profile` 资料页 / `filing` SEC 备案页 |
-| `categories[].companies[].featured` | 是否为知名公司 |
+| `meta.total` | Total company count |
+| `meta.source` | Data sources |
+| `meta.updated` | Data snapshot date |
+| `meta.generatedBy` | Classification and exclusion policy |
+| `categories[].id` | Category slug |
+| `categories[].name` | Category display name |
+| `categories[].companies[].ticker` | Stock ticker |
+| `categories[].companies[].name` | Company name |
+| `categories[].companies[].exchange` | Listing exchange (NASDAQ / NYSE / NYSE American / NYSE Arca / Cboe BZX) |
+| `categories[].companies[].industry` | Sub-industry (modern taxonomy) |
+| `categories[].companies[].sector` | Category name this company belongs to |
+| `categories[].companies[].employees` | Employee count |
+| `categories[].companies[].ipo` | IPO year |
+| `categories[].companies[].intro` | Official business description |
+| `categories[].companies[].website` | Official website |
+| `categories[].companies[].linkType` | `official` site / `profile` data page / `filing` SEC filing page |
+| `categories[].companies[].featured` | Whether it is a well-known company |
 
-## 32 个分类
+## The 32 categories
 
-半导体与芯片 / 电子与硬件设备 / 软件与 SaaS / 互联网与平台 / 电商与数字零售 / 电信与通信 / 媒体与娱乐 / 广告与营销 / 生物科技 / 制药 / 医疗器械 / 医疗健康服务 / 银行 / 保险 / 资管·私募·SPAC / 金融综合服务 / 房地产与 REIT / 油气与能源 / 新能源与公用事业 / 化工与材料 / 金属与采矿 / 汽车与零部件 / 航空航天与国防 / 运输·物流·航运 / 工业与机械制造 / 建筑与工程 / 食品饮料与餐饮 / 零售与消费品牌 / 旅游·酒店·博彩 / 教育 / 人力资源与商业服务 / 其他
+Semiconductors & Chips / Electronics & Hardware / Software & SaaS / Internet & Platforms / E-commerce & Digital Retail / Telecom & Communications / Media & Entertainment / Advertising & Marketing / Biotechnology / Pharmaceuticals / Medical Devices / Healthcare Services / Banks / Insurance / Asset Mgmt & SPAC / Financial Services / Real Estate & REITs / Oil, Gas & Energy / Renewables & Utilities / Chemicals & Materials / Metals & Mining / Autos & Parts / Aerospace & Defense / Transport & Logistics / Industrial & Machinery / Construction & Engineering / Food & Beverage / Retail & Consumer Brands / Travel & Hotels / Education / HR & Business Services / Other
 
-## 使用建议
+## Usage notes
 
-若需在回答中引用某行业公司，请先读取 `companies.json`，按 `categories` 筛选后给出公司名与官网链接；不要臆造未列出的条目。行业归属以数据源披露为准，分类仅供检索参考，不构成投资建议。
+To answer questions about companies in an industry, read `companies.json`, filter by `categories`, and cite the company name with its official website link. Do not invent entries that are not listed. Industry assignment follows the disclosed source data; categories are for retrieval purposes only and are not investment advice.

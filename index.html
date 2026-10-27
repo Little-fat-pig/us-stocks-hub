@@ -1,38 +1,37 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>美股上市公司分类导航</title>
-  <meta name="description" content="美股（NYSE / NASDAQ / AMEX）全部上市公司按主营业务分类导航，左侧分类、右侧卡片可直达官网，支持中英切换与搜索。" />
+  <title>US Listed Companies Navigator</title>
+  <meta name="description" content="A directory of all US-listed companies (NYSE / NASDAQ / AMEX) grouped by primary business. Left sidebar categories, cards link straight to official websites." />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="topbar">
-    <h1><span class="star">★</span> <span data-i18n="title">美股上市公司分类导航</span></h1>
-    <span class="meta" id="totalMeta">加载中…</span>
+    <h1><span class="star">★</span> US Listed Companies Navigator</h1>
+    <span class="meta" id="totalMeta">Loading…</span>
     <div class="top-actions">
-      <button id="langBtn" class="lang-btn" title="切换语言">EN</button>
       <div class="search">
-        <input id="search" type="search" data-i18n-ph="searchPlaceholder" placeholder="搜索公司名 / 股票代码…" autocomplete="off" />
+        <input id="search" type="search" placeholder="Search company or ticker…" autocomplete="off" />
       </div>
     </div>
   </header>
 
   <div class="layout">
     <aside class="sidebar" id="sidebar">
-      <h2 data-i18n="allCategories">全部分类</h2>
+      <h2>All Categories</h2>
       <div id="catList"></div>
     </aside>
 
     <main class="content">
       <div class="crumbs">
-        <span class="title" id="catTitle">全部公司</span>
+        <span class="title" id="catTitle">All Companies</span>
         <span class="sub" id="catSub"></span>
       </div>
       <div class="note" id="note"></div>
       <div class="grid" id="grid"></div>
-      <button class="more" id="more" hidden>加载更多</button>
+      <button class="more" id="more" hidden>Load more</button>
     </main>
   </div>
 

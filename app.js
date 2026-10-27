@@ -3,99 +3,33 @@
 const PAGE_SIZE = 60;
 const DATA_FILE = './companies.json';
 
-// 分类中英文映射（id -> {zh, en}）
-const CATEGORY_I18N = {
-  semiconductor: { zh: '半导体与芯片', en: 'Semiconductors & Chips' },
-  hardware: { zh: '电子与硬件设备', en: 'Electronics & Hardware' },
-  biotech: { zh: '生物科技', en: 'Biotechnology' },
-  pharma: { zh: '制药', en: 'Pharmaceuticals' },
-  meddevice: { zh: '医疗器械', en: 'Medical Devices' },
-  healthcare: { zh: '医疗健康服务', en: 'Healthcare Services' },
-  software: { zh: '软件与 SaaS', en: 'Software & SaaS' },
-  internet: { zh: '互联网与平台', en: 'Internet & Platforms' },
-  ecommerce: { zh: '电商与数字零售', en: 'E-commerce & Digital Retail' },
-  telecom: { zh: '电信与通信', en: 'Telecom & Communications' },
-  banking: { zh: '银行', en: 'Banks' },
-  insurance: { zh: '保险', en: 'Insurance' },
-  asset: { zh: '资管·私募·SPAC', en: 'Asset Mgmt · PE/VC · SPAC' },
-  financial: { zh: '金融综合服务', en: 'Financial Services' },
-  reit: { zh: '房地产与 REIT', en: 'Real Estate & REITs' },
-  oilgas: { zh: '油气与能源', en: 'Oil, Gas & Energy' },
-  renewable: { zh: '新能源与公用事业', en: 'Renewables & Utilities' },
-  chemical: { zh: '化工与材料', en: 'Chemicals & Materials' },
-  mining: { zh: '金属与采矿', en: 'Metals & Mining' },
-  auto: { zh: '汽车与零部件', en: 'Autos & Parts' },
-  aerospace: { zh: '航空航天与国防', en: 'Aerospace & Defense' },
-  transport: { zh: '运输·物流·航运', en: 'Transport · Logistics · Shipping' },
-  restaurant: { zh: '食品饮料与餐饮', en: 'Food, Beverage & Restaurants' },
-  retail: { zh: '零售与消费品牌', en: 'Retail & Consumer Brands' },
-  manufacturing: { zh: '工业与机械制造', en: 'Industrial & Machinery' },
-  construction: { zh: '建筑与工程', en: 'Construction & Engineering' },
-  media: { zh: '媒体与娱乐', en: 'Media & Entertainment' },
-  education: { zh: '教育', en: 'Education' },
-  travel: { zh: '旅游·酒店·博彩', en: 'Travel · Hotels · Gaming' },
-  advertising: { zh: '广告与营销', en: 'Advertising & Marketing' },
-  hr: { zh: '人力资源与商业服务', en: 'HR & Business Services' },
-  other: { zh: '其他', en: 'Other' },
+// 界面文案（单一英文，无语言切换）
+const STR = {
+  title: 'US Listed Companies Navigator',
+  searchPlaceholder: 'Search company or ticker…',
+  allCategories: 'All Categories',
+  allCompanies: 'All Companies',
+  loading: 'Loading…',
+  copy: 'Copy Site',
+  copied: 'Copied ✓',
+  visitSite: 'Visit Site ↗',
+  quote: 'Quote ↗',
+  filing: 'SEC Filing ↗',
+  featured: '★ Featured',
+  noSite: 'No site',
+  noIntro: 'No description available',
+  unitCompanies: '{n} companies',
+  unitCategories: '{n} categories',
+  matches: '{n} matches',
+  loadMore: 'Load more ({n} left)',
+  noteOther: '"Other": companies without usable industry classification.',
+  noteSearch: 'Matching across all categories.',
+  noteAbout: 'All US-listed operating companies (NYSE / NASDAQ / AMEX), grouped by primary business. ETFs, ETNs, bonds, warrants, preferred shares and closed-end funds are excluded. Descriptions are the companies\' official business summaries.',
+  emp: '{n} employees',
+  ipoYear: 'IPO {y}',
+  metaLine: 'Source: {source}<br />Updated: {updated}',
+  loadFail: 'Failed to load companies.json: {msg}. Please open this page via GitHub Pages or a local server.',
 };
-
-// 交易所中英文映射
-const EXCHANGE_EN = { '纳斯达克': 'NASDAQ', '纽交所': 'NYSE', '美交所': 'AMEX', '场外': 'OTC', 'OTC': 'OTC' };
-
-const I18N = {
-  zh: {
-    title: '美股上市公司分类导航',
-    searchPlaceholder: '搜索公司名 / 股票代码…',
-    allCategories: '全部分类',
-    allCompanies: '全部公司',
-    loading: '加载中…',
-    copy: '复制官网',
-    copied: '已复制 ✓',
-    visitSite: '访问官网 ↗',
-    quote: '行情页 ↗',
-    filing: 'SEC 备案 ↗',
-    featured: '★ 知名',
-    noSite: '官网缺失',
-    noIntro: '暂无业务描述',
-    unitCompanies: '{n} 家',
-    unitCategories: '{n} 类',
-    matches: '{n} 条匹配',
-    loadMore: '加载更多（剩 {n}）',
-    noteOther: '「其他」：暂无可用的行业分类信息的企业。',
-    noteSearch: '正在全部分类中匹配。',
-    noteAbout: '全部美股上市公司（NYSE / NASDAQ / AMEX），按主营业务分类。已剔除 ETF、ETN、权证、优先股等非普通股。简介为该公司官方业务描述原文（英文）。',
-    emp: '员工 {n} 人',
-    ipoYear: '{y} 年上市',
-    metaLine: '数据来源：{source}<br />最近更新：{updated}',
-  },
-  en: {
-    title: 'US Listed Companies Navigator',
-    searchPlaceholder: 'Search company or ticker…',
-    allCategories: 'All Categories',
-    allCompanies: 'All Companies',
-    loading: 'Loading…',
-    copy: 'Copy Site',
-    copied: 'Copied ✓',
-    visitSite: 'Visit Site ↗',
-    quote: 'Quote ↗',
-    filing: 'SEC Filing ↗',
-    featured: '★ Featured',
-    noSite: 'No site',
-    noIntro: 'No description available',
-    unitCompanies: '{n} companies',
-    unitCategories: '{n} categories',
-    matches: '{n} matches',
-    loadMore: 'Load more ({n} left)',
-    noteOther: '"Other": companies without usable industry classification.',
-    noteSearch: 'Matching across all categories.',
-    noteAbout: 'All US-listed operating companies (NYSE / NASDAQ / AMEX), grouped by primary business. ETFs, ETNs, warrants and preferred shares are excluded. Descriptions are the companies\' official business summaries.',
-    emp: '{n} employees',
-    ipoYear: 'IPO {y}',
-    metaLine: 'Source: {source}<br />Updated: {updated}',
-  },
-};
-
-let lang = /[?&]lang=en\b/i.test(location.search) ? 'en' : 'zh';
 
 const state = {
   data: null,
@@ -116,13 +50,14 @@ const els = {
   search: document.getElementById('search'),
   totalMeta: document.getElementById('totalMeta'),
   footer: document.getElementById('footer'),
-  langBtn: document.getElementById('langBtn'),
 };
 
-function catName(id) { const m = CATEGORY_I18N[id]; return m ? m[lang] : id; }
-function exName(x) { return lang === 'zh' ? (x || '') : (EXCHANGE_EN[x] || x || ''); }
+function catName(id, fallback) {
+  const c = state.catIndex[id];
+  return (c && c.name) || fallback || id;
+}
 function t(key, vars) {
-  let s = (I18N[lang] && I18N[lang][key]) || key;
+  let s = STR[key] || key;
   if (vars) for (const k in vars) s = s.replace('{' + k + '}', vars[k]);
   return s;
 }
@@ -137,13 +72,12 @@ async function loadData() {
     if (!res.ok) throw new Error('HTTP ' + res.status);
     state.data = await res.json();
   } catch (e) {
-    els.grid.innerHTML = '<p class="err">无法加载 companies.json：' + esc(e.message) + '。请通过 GitHub Pages 或本地服务器访问。</p>';
+    els.grid.innerHTML = `<p class="err">${t('loadFail', { msg: esc(e.message) })}</p>`;
     return;
   }
   prepare();
   renderSidebar();
   render();
-  applyLang();
 }
 
 function prepare() {
@@ -162,7 +96,7 @@ function prepare() {
 function renderSidebar() {
   const frag = document.createDocumentFragment();
   frag.appendChild(makeCat('all', t('allCompanies'), state.all.length));
-  for (const c of state.data.categories) frag.appendChild(makeCat(c.id, catName(c.id), c.companies.length));
+  for (const c of state.data.categories) frag.appendChild(makeCat(c.id, c.name, c.companies.length));
   els.catList.innerHTML = '';
   els.catList.appendChild(frag);
 }
@@ -221,7 +155,7 @@ function currentList() {
 function render() {
   const list = currentList();
   const cat = state.current === 'all' ? null : state.catIndex[state.current];
-  els.catTitle.textContent = cat ? catName(cat.id) : t('allCompanies');
+  els.catTitle.textContent = cat ? cat.name : t('allCompanies');
   els.catSub.textContent = state.search
     ? t('matches', { n: list.length })
     : t('unitCompanies', { n: cat ? cat.companies.length : state.all.length });
@@ -280,7 +214,7 @@ function makeCard(c) {
   const isOfficial = c.linkType === 'official' || (!!url && !/stockanalysis\.com|finance\.yahoo\.com|sec\.gov/i.test(url));
   const linkLabel = isOfficial ? t('visitSite') : (c.linkType === 'filing' ? t('filing') : t('quote'));
   const exHot = c.featured ? `<span class="hot">${t('featured')}</span> · ` : '';
-  const bits = [exName(c.exchange)];
+  const bits = [c.exchange];
   if (c.employees) bits.push(t('emp', { n: c.employees }));
   if (c.ipo) bits.push(t('ipoYear', { y: c.ipo }));
   const sub = bits.filter(Boolean).join(' · ');
@@ -316,18 +250,8 @@ function makeCard(c) {
   return a;
 }
 
-function applyLang() {
-  document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
-  document.querySelectorAll('[data-i18n]').forEach(e => (e.textContent = t(e.dataset.i18n)));
-  document.querySelectorAll('[data-i18n-ph]').forEach(e => (e.placeholder = t(e.dataset.i18nPh)));
-  els.langBtn.textContent = lang === 'zh' ? 'EN' : '中';
-  document.title = t('title');
-  if (state.data) { prepare(); renderSidebar(); render(); }
-}
-
 // 事件
 els.more.addEventListener('click', () => appendCards(currentList()));
 els.search.addEventListener('input', (e) => { state.search = e.target.value; render(); });
-els.langBtn.addEventListener('click', () => { lang = lang === 'zh' ? 'en' : 'zh'; applyLang(); });
 
 loadData();
