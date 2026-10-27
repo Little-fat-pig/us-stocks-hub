@@ -56,6 +56,7 @@ const I18N = {
     marketPending: '该市场数据整理中，敬请期待。',
     noteOther: '「其他综合」：业务描述缺失或无法按主营业务归类的企业。',
     noteSearch: '正在跨全部分类匹配。',
+    noteRepresent: '本市场当前展示【代表性上市公司】（按真实主营业务分类），全量列表正在持续扩充中。',
     metaLine: '数据来源：{source} ｜ 更新：{updated}',
   },
   en: {
@@ -72,6 +73,7 @@ const I18N = {
     marketPending: 'Data for this market is being prepared.',
     noteOther: '"Other": companies with missing or unclassifiable business descriptions.',
     noteSearch: 'Matching across all categories.',
+    noteRepresent: 'This market currently shows a curated set of representative listed companies (classified by real business line); the full list is being expanded.',
     metaLine: 'Source: {source} ｜ Updated: {updated}',
   },
 };
@@ -90,7 +92,7 @@ const state = {
 };
 
 const els = {
-  marketTabs: document.getElementById('marketTabs'),
+  marketTabs: document.getElementById('marketnav'),
   catList: document.getElementById('catList'),
   grid: document.getElementById('grid'),
   more: document.getElementById('more'),
@@ -215,13 +217,17 @@ function render() {
   els.catSub.textContent = state.search
     ? `${list.length}`
     : (cat ? `${cat.companies.length}` : `${state.all.length}`);
-  if (state.current === 'other') {
-    els.note.style.display = ''; els.note.textContent = t('noteOther');
-  } else if (state.search) {
+
+  if (state.search) {
     els.note.style.display = ''; els.note.textContent = t('noteSearch');
+  } else if (state.current === 'other') {
+    els.note.style.display = ''; els.note.textContent = t('noteOther');
+  } else if (state.currentMarket && state.currentMarket.id !== 'us') {
+    els.note.style.display = ''; els.note.textContent = t('noteRepresent');
   } else {
     els.note.style.display = 'none';
   }
+
   state.rendered = 0;
   els.grid.innerHTML = '';
   appendCards(list);

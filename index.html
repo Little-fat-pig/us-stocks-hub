@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>全球股市上市公司分类导航</title>
-  <meta name="description" content="美股 / 中国 / 日本 / 英国 上市公司按主营业务分类导航，左侧全部分类，右侧卡片可跳转官网/行情，支持中英切换。" />
+  <meta name="description" content="美股 / 中国 / 日本 / 英国 上市公司按主营业务分类导航，顶部股市切换、左侧全部分类、右侧卡片可跳转行情，支持中英切换。" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -19,12 +19,13 @@
     </div>
   </header>
 
+  <nav class="marketnav" id="marketnav" aria-label="股市切换"></nav>
+
   <div class="layout">
-    <nav class="sidebar" id="sidebar">
-      <div class="market-switch" id="marketTabs"></div>
+    <aside class="sidebar" id="sidebar">
       <h2 data-i18n="allCategories">全部分类</h2>
       <div id="catList"></div>
-    </nav>
+    </aside>
 
     <main class="content">
       <div class="crumbs">
