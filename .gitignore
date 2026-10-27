@@ -1,0 +1,10 @@
+# 抓取缓存与临时文件（可由脚本重新生成，不入库）
+build/sa_cache.json
+build/sic_cache.json
+build/companies.backup.json
+build/_shot*.png
+build/_sa_*.html
+
+# 系统文件
+.DS_Store
+Thumbs.db

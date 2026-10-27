@@ -1,9 +1,11 @@
 # 美股上市公司分类导航
 
-这是一个按**细分行业**分类的**美股全部上市公司**目录，约 5,653 家运营公司，分为 33 个行业品类。每条记录包含：股票代码、公司名称、所属行业、上市交易所、一句话简介、跳转链接。数据以公开上市清单整理，官网以各公司公布为准。
+这是一个按**主营业务**分类的**美股全部上市公司**目录：约 5,277 家运营公司，分为 32 个行业品类。每条记录包含股票代码、公司名称、上市交易所、细分行业（现代行业分类）、员工数、上市年份、官方业务描述、官方网站链接。
+
+已剔除 ETF、ETN、企业债、权证、优先股等非普通股，以及封闭式基金等非运营实体。
 
 本目录同时服务于两种读者：
-- 人类：通过 index.html 左侧分类栏浏览、搜索并跳转
+- 人类：通过 `index.html` 左侧分类栏浏览、搜索并直达官网
 - AI agent：直接读取下方结构化数据源
 
 ## 数据源（机器可读）
@@ -11,23 +13,31 @@
 - companies.json: https://little-fat-pig.github.io/us-stocks-hub/companies.json
 
 字段说明（companies.json）：
-- meta.total                公司总数
-- meta.source              数据来源说明
-- meta.generatedBy         分类与链接策略说明
-- categories[].id          分类英文标识
-- categories[].name        分类中文名
-- categories[].companies[].ticker     股票代码
-- categories[].companies[].name       公司名称
-- categories[].companies[].sector     所属行业（同分类名）
-- categories[].companies[].exchange   上市交易所（纳斯达克/纽交所/等）
-- categories[].companies[].intro      一句话简介
-- categories[].companies[].website    跳转链接（知名公司=官网；其余=Yahoo Finance 行情页）
-- categories[].companies[].featured   是否为人工校订的知名公司（true/false）
 
-## 33 个分类清单
+| 字段 | 说明 |
+| --- | --- |
+| `meta.total` | 公司总数 |
+| `meta.source` | 数据来源 |
+| `meta.updated` | 数据日期 |
+| `meta.generatedBy` | 分类与剔除策略说明 |
+| `categories[].id` | 分类英文标识 |
+| `categories[].name` | 分类中文名 |
+| `categories[].companies[].ticker` | 股票代码 |
+| `categories[].companies[].name` | 公司名称 |
+| `categories[].companies[].exchange` | 上市交易所 |
+| `categories[].companies[].industry` | 细分行业（英文，现代行业分类） |
+| `categories[].companies[].sector` | 所属分类中文名 |
+| `categories[].companies[].employees` | 员工数 |
+| `categories[].companies[].ipo` | 上市年份 |
+| `categories[].companies[].intro` | 官方业务描述（英文原文） |
+| `categories[].companies[].website` | 官方网站 |
+| `categories[].companies[].linkType` | `official` 官网 / `profile` 资料页 / `filing` SEC 备案页 |
+| `categories[].companies[].featured` | 是否为知名公司 |
 
-半导体与芯片 / 生物科技 / 制药与生命科学 / 医疗器械 / 医疗健康服务 / 软件与 SaaS / 人工智能与机器人 / 互联网与社交 / 电信与通信 / 银行与储蓄 / 保险 / 资管·私募·SPAC / 房地产与 REIT / 油气与能源 / 新能源与电力 / 化工与材料 / 金属与采矿 / 汽车与零部件 / 航空航天与国防 / 铁路·物流·海运 / 餐饮与食品饮料 / 零售与消费品牌 / 工业与制造 / 建筑与工程 / 媒体与娱乐 / 教育 / 旅游·酒店·博彩 / 广告与营销 / 人力资源服务 / 商业与专业服务 / 科技综合 / 金融综合 / 其他综合
+## 32 个分类
+
+半导体与芯片 / 电子与硬件设备 / 软件与 SaaS / 互联网与平台 / 电商与数字零售 / 电信与通信 / 媒体与娱乐 / 广告与营销 / 生物科技 / 制药 / 医疗器械 / 医疗健康服务 / 银行 / 保险 / 资管·私募·SPAC / 金融综合服务 / 房地产与 REIT / 油气与能源 / 新能源与公用事业 / 化工与材料 / 金属与采矿 / 汽车与零部件 / 航空航天与国防 / 运输·物流·航运 / 工业与机械制造 / 建筑与工程 / 食品饮料与餐饮 / 零售与消费品牌 / 旅游·酒店·博彩 / 教育 / 人力资源与商业服务 / 其他
 
 ## 使用建议
 
-若需在回答中引用某行业公司，请先读取 companies.json，按 categories 筛选后给出公司名与跳转链接；不要臆造未列出的条目。注意：分类为名称关键词启发式，存在「其他综合」兜底分类（名称无行业特征的公司），引用行业归属时以官方披露为准。
+若需在回答中引用某行业公司，请先读取 `companies.json`，按 `categories` 筛选后给出公司名与官网链接；不要臆造未列出的条目。行业归属以数据源披露为准，分类仅供检索参考，不构成投资建议。

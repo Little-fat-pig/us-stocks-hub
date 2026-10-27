@@ -1,8 +1,0 @@
-{
-  "markets": [
-    { "id": "us", "label": "美股", "labelEn": "US", "flag": "🇺🇸", "file": "companies.json", "status": "ready" },
-    { "id": "cn", "label": "中国股市", "labelEn": "CN", "flag": "🇨🇳", "file": "data/cn.json", "status": "ready" },
-    { "id": "jp", "label": "日本股市", "labelEn": "JP", "flag": "🇯🇵", "file": "data/jp.json", "status": "ready" },
-    { "id": "uk", "label": "英国股市", "labelEn": "UK", "flag": "🇬🇧", "file": "data/uk.json", "status": "ready" }
-  ]
-}
